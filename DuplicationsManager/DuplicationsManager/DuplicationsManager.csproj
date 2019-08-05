@@ -35,6 +35,9 @@
   <PropertyGroup>
     <StartupObject>DuplicationsManager.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>dup_manager.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,6 +51,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\DupMatch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DupMatch.Designer.cs">
+      <DependentUpon>DupMatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DupResult.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DupResult.Designer.cs">
+      <DependentUpon>DupResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VerticalListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\VerticalListView.Designer.cs">
+      <DependentUpon>VerticalListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DupProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DupProgressForm.Designer.cs">
+      <DependentUpon>DupProgressForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DupResultsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,12 +92,24 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\DupMatch.resx">
+      <DependentUpon>DupMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DupResult.resx">
+      <DependentUpon>DupResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DupProgressForm.resx">
+      <DependentUpon>DupProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DupResultsForm.resx">
       <DependentUpon>DupResultsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dup_manager.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

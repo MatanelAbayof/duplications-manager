@@ -1,8 +1,8 @@
-﻿using System;
+﻿using DuplicationsManager.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,20 +13,28 @@ namespace DuplicationsManager.Forms
 {
     public partial class DupResultsForm : Form
     {
-        private string checkFolderPath;
-
-        public DupResultsForm(string checkFolderPath)
+        public DupResultsForm()
         {
-            this.checkFolderPath = checkFolderPath;
-
             InitializeComponent();
 
-            linkLabel_checkedFolder.Text = checkFolderPath;
+            setDummyListItems();
         }
 
-        private void LinkLabel_checkedFolder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void setDummyListItems()
         {
-            Process.Start(checkFolderPath);
+            for(int i = 0; i < 20; ++i)
+            {
+                DupResult dupResult = new DupResult();
+                dupResult.NumOfDups = i;
+                for(int j = 0; j < i; ++j)
+                {
+                    DupMatch dupMatch = new DupMatch();
+                    dupResult.AddDupMatch(dupMatch);
+                }
+                verticalListView_results.AddControl(dupResult);
+            }
+            
+
         }
     }
 }

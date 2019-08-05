@@ -18,21 +18,21 @@ namespace DuplicationsManager
         {
             InitializeComponent();
 
-            updateCheckBt();
+            UpdateCheckBt();
 
             // TODO remove this
-            openDupResultsForm(@"C:\");
+            OpenDupResultsForm();
         }
 
 
         // update check button
-        private void updateCheckBt()
+        private void UpdateCheckBt()
         {
-            button_checkDupFiles.Enabled = isInputsOK();
+            button_checkDupFiles.Enabled = IsInputsOK();
         }
 
         // check if inputs OK
-        private bool isInputsOK()
+        private bool IsInputsOK()
         {
             // get text
             string checkFolderInputStr = textBox_checkFolder.Text;
@@ -42,7 +42,7 @@ namespace DuplicationsManager
 
         private void TextBox_checkFolder_TextChanged(object sender, EventArgs e)
         {
-            updateCheckBt();
+            UpdateCheckBt();
         }
 
         private void Button_browseCheckFolder_Click(object sender, EventArgs e)
@@ -57,14 +57,27 @@ namespace DuplicationsManager
 
         private void Button_checkDupFiles_Click(object sender, EventArgs e)
         {
-            openDupResultsForm(textBox_checkFolder.Text);
+            OpenDupResultsForm(textBox_checkFolder.Text);
         }
 
         // open duplications result form
-        private void openDupResultsForm(string checkFolderPath)
+        private void OpenDupResultsForm(string checkFolderPath)
         {
-            DupResultsForm dupResForm = new DupResultsForm(checkFolderPath);
-            dupResForm.ShowDialog();
+            DupProgressForm dupResForm = new DupProgressForm(checkFolderPath);
+            DialogResult dialogResult = dupResForm.ShowDialog();
+            if(dialogResult == DialogResult.OK)
+            {
+                // TODO must get result data
+                OpenDupResultsForm();
+            }
+        }
+
+        // open duplications results form
+        private void OpenDupResultsForm() // TODO must get result parameter
+        {
+            DupResultsForm dupResultsForm = new DupResultsForm();
+            dupResultsForm.ShowDialog();
+            Close();
         }
     }
 }
