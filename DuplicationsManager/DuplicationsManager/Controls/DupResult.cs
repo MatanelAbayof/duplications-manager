@@ -12,7 +12,6 @@ namespace DuplicationsManager.Controls
 {
     public partial class DupResult : UserControl
     {
-
         private int numOfDups;
         public int NumOfDups
         {
@@ -23,18 +22,15 @@ namespace DuplicationsManager.Controls
                 this.label_numOfDups.Text = value.ToString();
             }
         }
-            
-            
 
         public DupResult()
         {
             InitializeComponent();
         }
 
-        // add duplication match
-        public void AddDupMatch(DupMatch dupMatch) // TODO make this private
+        public void AddOnHandleBtClickListener(EventHandler eh)
         {
-            this.verticalListView_dupMatchs.AddControl(dupMatch);
+            button_handleDups.Click += eh;
         }
     }
 }

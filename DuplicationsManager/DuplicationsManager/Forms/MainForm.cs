@@ -1,4 +1,5 @@
-﻿using DuplicationsManager.Forms;
+﻿using DuplicationsManager.Duplications;
+using DuplicationsManager.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,9 +21,6 @@ namespace DuplicationsManager
             InitializeComponent();
 
             UpdateCheckBt();
-
-            // TODO remove this
-            OpenDupResultsForm();
         }
 
 
@@ -68,14 +67,26 @@ namespace DuplicationsManager
             if(dialogResult == DialogResult.OK)
             {
                 // TODO must get result data
-                OpenDupResultsForm();
+                List<DupFiles> dupsFiles = new List<DupFiles>();
+
+
+                if (true) // TODO check if have duplications
+                {
+                    OpenDupResultsForm(dupsFiles);
+                } else 
+                {
+                    string dialogTitle = "No duplications";
+                    string dialogMessage = "Not found duplication files.";
+                    DialogResult result = MessageBox.Show(dialogMessage, dialogTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                
             }
         }
 
         // open duplications results form
-        private void OpenDupResultsForm() // TODO must get result parameter
+        private void OpenDupResultsForm(List<DupFiles> dupsFiles)
         {
-            DupResultsForm dupResultsForm = new DupResultsForm();
+            DupResultsForm dupResultsForm = new DupResultsForm(dupsFiles);
             dupResultsForm.ShowDialog();
             Close();
         }

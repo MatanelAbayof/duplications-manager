@@ -41,6 +41,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,6 +70,8 @@
     <Compile Include="Controls\VerticalListView.Designer.cs">
       <DependentUpon>VerticalListView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Duplications\DupFiles.cs" />
+    <Compile Include="Duplications\DupManager.cs" />
     <Compile Include="Forms\DupProgressForm.cs">
       <SubType>Form</SubType>
     </Compile>

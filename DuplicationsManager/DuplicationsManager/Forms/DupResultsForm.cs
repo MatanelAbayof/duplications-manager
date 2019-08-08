@@ -1,4 +1,5 @@
 ﻿using DuplicationsManager.Controls;
+using DuplicationsManager.Duplications;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,28 +14,27 @@ namespace DuplicationsManager.Forms
 {
     public partial class DupResultsForm : Form
     {
-        public DupResultsForm()
+
+        public DupResultsForm(List<DupFiles> dupsFiles)
         {
             InitializeComponent();
 
-            setDummyListItems();
+            BuildDupFilesList(dupsFiles);
         }
 
-        private void setDummyListItems()
+        private void BuildDupFilesList(List<DupFiles> dupsFiles)
         {
-            for(int i = 0; i < 20; ++i)
+            verticalListView_results.Controls.Clear();
+
+            foreach (DupFiles df in dupsFiles)
             {
                 DupResult dupResult = new DupResult();
-                dupResult.NumOfDups = i;
-                for(int j = 0; j < i; ++j)
-                {
-                    DupMatch dupMatch = new DupMatch();
-                    dupResult.AddDupMatch(dupMatch);
-                }
+                dupResult.NumOfDups = df.DuplicationsFiles.Count;
+
+                // TODO dupResult.AddOnHandleBtClickListener();
+
                 verticalListView_results.AddControl(dupResult);
             }
-            
-
         }
     }
 }

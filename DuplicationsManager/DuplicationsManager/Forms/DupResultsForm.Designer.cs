@@ -40,7 +40,7 @@ namespace DuplicationsManager.Forms
             this.label_dupResTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_dupResTitle.AutoSize = true;
             this.label_dupResTitle.Font = new System.Drawing.Font("MS Outlook", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label_dupResTitle.Location = new System.Drawing.Point(654, 42);
+            this.label_dupResTitle.Location = new System.Drawing.Point(276, 42);
             this.label_dupResTitle.Name = "label_dupResTitle";
             this.label_dupResTitle.Size = new System.Drawing.Size(242, 24);
             this.label_dupResTitle.TabIndex = 0;
@@ -55,17 +55,18 @@ namespace DuplicationsManager.Forms
             this.verticalListView_results.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.verticalListView_results.Location = new System.Drawing.Point(21, 96);
             this.verticalListView_results.Name = "verticalListView_results";
-            this.verticalListView_results.Size = new System.Drawing.Size(1507, 747);
+            this.verticalListView_results.Size = new System.Drawing.Size(751, 823);
             this.verticalListView_results.TabIndex = 1;
             // 
             // DupResultsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1548, 855);
+            this.ClientSize = new System.Drawing.Size(792, 931);
             this.Controls.Add(this.label_dupResTitle);
             this.Controls.Add(this.verticalListView_results);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(600, 380);
             this.Name = "DupResultsForm";
             this.Text = "Duplications results";
             this.ResumeLayout(false);
