@@ -72,6 +72,12 @@
     </Compile>
     <Compile Include="Duplications\DupFiles.cs" />
     <Compile Include="Duplications\DupManager.cs" />
+    <Compile Include="Forms\DupMatchsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DupMatchsForm.Designer.cs">
+      <DependentUpon>DupMatchsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DupProgressForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\DupResult.resx">
       <DependentUpon>DupResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DupMatchsForm.resx">
+      <DependentUpon>DupMatchsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DupProgressForm.resx">
       <DependentUpon>DupProgressForm.cs</DependentUpon>

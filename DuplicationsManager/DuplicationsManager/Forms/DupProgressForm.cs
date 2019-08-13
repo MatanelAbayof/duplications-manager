@@ -1,9 +1,11 @@
-﻿using System;
+﻿using DuplicationsManager.Duplications;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ namespace DuplicationsManager.Forms
     public partial class DupProgressForm : Form
     {
         private string checkFolderPath;
+        public List<DupFiles> ResultDupFiles;
 
         public DupProgressForm(string checkFolderPath)
         {
@@ -37,24 +40,13 @@ namespace DuplicationsManager.Forms
 
         private void BackgroundWorker_buildResults_DoWork(object sender, DoWorkEventArgs e)
         {
-            // -------------TODO-----------------------------------------------
-
-
             BackgroundWorker worker = sender as BackgroundWorker;
-            for (int i = 1; i <= 10; i++)
-            {
-                if (worker.CancellationPending == true)
-                {
-                    e.Cancel = true;
-                    break;
-                }
-                else
-                {
-                    // Perform a time consuming operation and report progress.
-                    System.Threading.Thread.Sleep(500);
-                    worker.ReportProgress(i * 10);
-                }
-            }
+
+            Func<string, long> sortByFunc = filePath => new FileInfo(filePath).Length; // TODO need to choose the sort function
+            string filesPattern = "*.mp3"; // TODO need to choose files pattern
+            ResultDupFiles = DupManager.CheckDup(checkFolderPath, filesPattern, sortByFunc);
+
+            // TODO add worker.ReportProgress(i * 10);
         }
 
         private void BackgroundWorker_buildResults_ProgressChanged(object sender, ProgressChangedEventArgs e)

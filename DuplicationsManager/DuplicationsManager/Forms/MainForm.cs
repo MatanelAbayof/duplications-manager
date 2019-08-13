@@ -62,12 +62,12 @@ namespace DuplicationsManager
         // open duplications result form
         private void OpenDupResultsForm(string checkFolderPath)
         {
-            DupProgressForm dupResForm = new DupProgressForm(checkFolderPath);
-            DialogResult dialogResult = dupResForm.ShowDialog();
+            DupProgressForm dupProgressForm = new DupProgressForm(checkFolderPath);
+            DialogResult dialogResult = dupProgressForm.ShowDialog();
             if(dialogResult == DialogResult.OK)
             {
-                // TODO must get result data
-                List<DupFiles> dupsFiles = new List<DupFiles>();
+                // get result data
+                List<DupFiles> dupsFiles = dupProgressForm.ResultDupFiles;
 
 
                 if (true) // TODO check if have duplications

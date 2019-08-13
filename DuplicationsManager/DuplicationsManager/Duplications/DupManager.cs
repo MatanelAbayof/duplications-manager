@@ -24,12 +24,14 @@ namespace DuplicationsManager.Duplications
             List<DupFiles> dupsFiles = new List<DupFiles>();
             foreach (long key in dupMap.Keys)
             {
-
                 LinkedList<string> linkedList = dupMap[key];
-                DupFiles dupFiles = new DupFiles();
-                foreach (string entry in linkedList)
-                    dupFiles.DuplicationsFiles.Add(entry);
-                dupsFiles.Add(dupFiles);
+                if(linkedList.Count > 1)
+                {
+                    DupFiles dupFiles = new DupFiles();
+                    foreach (string entry in linkedList)
+                        dupFiles.DuplicationsFiles.Add(entry);
+                    dupsFiles.Add(dupFiles);
+                }
             }
             return dupsFiles;
         }

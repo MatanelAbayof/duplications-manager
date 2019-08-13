@@ -31,7 +31,11 @@ namespace DuplicationsManager.Forms
                 DupResult dupResult = new DupResult();
                 dupResult.NumOfDups = df.DuplicationsFiles.Count;
 
-                // TODO dupResult.AddOnHandleBtClickListener();
+                dupResult.AddOnHandleBtClickListener((s, e) =>
+                {
+                    DupMatchsForm dmf = new DupMatchsForm(df);
+                    dmf.ShowDialog();
+                });
 
                 verticalListView_results.AddControl(dupResult);
             }
