@@ -70,7 +70,8 @@ namespace DuplicationsManager
                 List<DupFiles> dupsFiles = dupProgressForm.ResultDupFiles;
 
 
-                if (true) // TODO check if have duplications
+                // check if have duplications
+                if (dupsFiles.Count > 0) 
                 {
                     OpenDupResultsForm(dupsFiles);
                 } else 

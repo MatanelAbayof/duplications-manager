@@ -66,6 +66,7 @@
             this.button_openFile.TabIndex = 2;
             this.button_openFile.Text = "Open file";
             this.button_openFile.UseVisualStyleBackColor = true;
+            this.button_openFile.Click += new System.EventHandler(this.Button_openFile_Click);
             // 
             // button_openFolder
             // 
@@ -76,6 +77,7 @@
             this.button_openFolder.TabIndex = 3;
             this.button_openFolder.Text = "Open folder";
             this.button_openFolder.UseVisualStyleBackColor = true;
+            this.button_openFolder.Click += new System.EventHandler(this.Button_openFolder_Click);
             // 
             // label_fileSize
             // 
@@ -106,6 +108,7 @@
             this.button_deleteFile.TabIndex = 6;
             this.button_deleteFile.Text = "Delete file";
             this.button_deleteFile.UseVisualStyleBackColor = true;
+            this.button_deleteFile.Click += new System.EventHandler(this.Button_deleteFile_Click);
             // 
             // DupMatch
             // 

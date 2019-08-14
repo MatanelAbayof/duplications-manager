@@ -69,9 +69,9 @@
             // 
             this.button_checkDupFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_checkDupFiles.Location = new System.Drawing.Point(284, 188);
+            this.button_checkDupFiles.Location = new System.Drawing.Point(284, 175);
             this.button_checkDupFiles.Name = "button_checkDupFiles";
-            this.button_checkDupFiles.Size = new System.Drawing.Size(232, 38);
+            this.button_checkDupFiles.Size = new System.Drawing.Size(232, 51);
             this.button_checkDupFiles.TabIndex = 3;
             this.button_checkDupFiles.Text = "Check";
             this.button_checkDupFiles.UseVisualStyleBackColor = true;
