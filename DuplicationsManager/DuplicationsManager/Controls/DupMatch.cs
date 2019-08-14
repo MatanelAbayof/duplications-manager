@@ -30,6 +30,13 @@ namespace DuplicationsManager.Controls
         // load component info from file
         private void LoadComponentInfo()
         {
+            if (!File.Exists(FilePath))
+            {
+                Enabled = false;
+                return;
+            }
+
+
             // read file info
             FileInfo fileInfo = new FileInfo(FilePath);
             WindowsMediaPlayer wmp = new WindowsMediaPlayer();

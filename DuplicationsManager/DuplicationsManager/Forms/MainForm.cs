@@ -47,6 +47,7 @@ namespace DuplicationsManager
         private void Button_browseCheckFolder_Click(object sender, EventArgs e)
         {
             var fd = new FolderBrowserDialog();
+            fd.SelectedPath = textBox_checkFolder.Text;
             if (fd.ShowDialog() == DialogResult.OK)
             {
                 string checkFolderPath = fd.SelectedPath;

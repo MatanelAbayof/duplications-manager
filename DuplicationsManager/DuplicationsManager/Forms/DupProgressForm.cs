@@ -43,8 +43,8 @@ namespace DuplicationsManager.Forms
             BackgroundWorker worker = sender as BackgroundWorker;
 
             Func<string, long> sortByFunc = filePath => new FileInfo(filePath).Length; // TODO need to choose the sort function
-            string filesPattern = "*.mp3"; // TODO need to choose files pattern
-            ResultDupFiles = DupManager.CheckDup(checkFolderPath, filesPattern, sortByFunc);
+            string filesPattern = "*.mp4"; // TODO need to choose files pattern
+            ResultDupFiles = DupManager.CheckDup(checkFolderPath, filesPattern, sortByFunc); // update result member
 
             // TODO add worker.ReportProgress(i * 10);
         }
@@ -69,7 +69,6 @@ namespace DuplicationsManager.Forms
         private void ReturnResAndClose()
         {
             this.DialogResult = DialogResult.OK;
-            // TODO update result member
             Close();
         }
     }
