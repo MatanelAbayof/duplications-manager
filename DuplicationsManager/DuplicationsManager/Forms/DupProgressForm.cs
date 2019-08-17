@@ -1,4 +1,5 @@
 ﻿using DuplicationsManager.Duplications;
+using DuplicationsManager.Media.Duplications;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,16 +16,16 @@ namespace DuplicationsManager.Forms
 {
     public partial class DupProgressForm : Form
     {
-        private string checkFolderPath;
+        private DupRequestInfo dupRequestInfo;
         public List<DupFiles> ResultDupFiles;
 
-        public DupProgressForm(string checkFolderPath)
+        public DupProgressForm(DupRequestInfo dupRequestInfo)
         {
-            this.checkFolderPath = checkFolderPath;
+            this.dupRequestInfo = dupRequestInfo;
 
             InitializeComponent();
 
-            linkLabel_checkedFolder.Text = checkFolderPath;
+            linkLabel_checkedFolder.Text = dupRequestInfo.CheckedDir;
 
             backgroundWorker_buildResults.WorkerReportsProgress = true;
             backgroundWorker_buildResults.WorkerSupportsCancellation = true;
@@ -35,16 +36,13 @@ namespace DuplicationsManager.Forms
 
         private void LinkLabel_checkedFolder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(checkFolderPath);
+            Process.Start(dupRequestInfo.CheckedDir);
         }
 
         private void BackgroundWorker_buildResults_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-
-            Func<string, long> sortByFunc = filePath => new FileInfo(filePath).Length; // TODO need to choose the sort function
-            string filesPattern = "*.mp4"; // TODO need to choose files pattern
-            ResultDupFiles = DupManager.CheckDup(checkFolderPath, filesPattern, sortByFunc); // update result member
+            ResultDupFiles = DupManager.CheckDup(dupRequestInfo); // update result member
 
             // TODO add worker.ReportProgress(i * 10);
         }

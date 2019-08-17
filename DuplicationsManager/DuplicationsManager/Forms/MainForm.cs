@@ -1,5 +1,6 @@
 ﻿using DuplicationsManager.Duplications;
 using DuplicationsManager.Forms;
+using DuplicationsManager.Media.Duplications;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DuplicationsManager.Duplications.MediaFileInfo;
 
 namespace DuplicationsManager
 {
@@ -57,13 +59,20 @@ namespace DuplicationsManager
 
         private void Button_checkDupFiles_Click(object sender, EventArgs e)
         {
-            OpenDupResultsForm(textBox_checkFolder.Text);
+            DupRequestInfo dri = new DupRequestInfo();
+            dri.CheckedDir = textBox_checkFolder.Text;
+
+            dri.MediaType = MediaFileInfo.MediaType.MUSIC; // TODO set value from field
+            dri.MediaSortType = MediaSortType.BY_SIZE; // TODO set value from field
+
+
+            OpenDupResultsForm(dri);
         }
 
         // open duplications result form
-        private void OpenDupResultsForm(string checkFolderPath)
+        private void OpenDupResultsForm(DupRequestInfo dupRequestInfo)
         {
-            DupProgressForm dupProgressForm = new DupProgressForm(checkFolderPath);
+            DupProgressForm dupProgressForm = new DupProgressForm(dupRequestInfo);
             DialogResult dialogResult = dupProgressForm.ShowDialog();
             if(dialogResult == DialogResult.OK)
             {
@@ -90,7 +99,6 @@ namespace DuplicationsManager
         {
             DupResultsForm dupResultsForm = new DupResultsForm(dupsFiles);
             dupResultsForm.ShowDialog();
-            Close();
         }
     }
 }

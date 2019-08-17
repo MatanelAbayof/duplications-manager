@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuplicationsManager.Media.Duplications;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,9 +12,11 @@ namespace DuplicationsManager.Duplications
     abstract class DupManager
     {
         // check duplication of files at folder
-        public static List<DupFiles> CheckDup(string folderPath, string filesPattern, Func<string, long> sortByFunc)
+        public static List<DupFiles> CheckDup(DupRequestInfo dupRequestInfo)
         {
-            DupMap dupMap = BuildDupMap(folderPath, filesPattern, sortByFunc);
+            string filesPattern = MediaFileInfo.GetFilesPattern(dupRequestInfo.MediaType);
+            var sortFunc = MediaFileInfo.GetSortFunc(dupRequestInfo.MediaSortType);
+            DupMap dupMap = BuildDupMap(dupRequestInfo.CheckedDir, filesPattern, sortFunc);
             List<DupFiles> dupsFiles = BuildDupList(dupMap);
             return dupsFiles;
         }
