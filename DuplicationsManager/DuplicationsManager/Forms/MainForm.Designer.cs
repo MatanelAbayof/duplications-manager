@@ -33,6 +33,8 @@
             this.textBox_checkFolder = new System.Windows.Forms.TextBox();
             this.button_browseCheckFolder = new System.Windows.Forms.Button();
             this.button_checkDupFiles = new System.Windows.Forms.Button();
+            this.label_mediaTypeLabel = new System.Windows.Forms.Label();
+            this.listBox_mediaType = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label_checkFolder
@@ -69,7 +71,7 @@
             // 
             this.button_checkDupFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_checkDupFiles.Location = new System.Drawing.Point(284, 175);
+            this.button_checkDupFiles.Location = new System.Drawing.Point(284, 270);
             this.button_checkDupFiles.Name = "button_checkDupFiles";
             this.button_checkDupFiles.Size = new System.Drawing.Size(232, 51);
             this.button_checkDupFiles.TabIndex = 3;
@@ -77,11 +79,31 @@
             this.button_checkDupFiles.UseVisualStyleBackColor = true;
             this.button_checkDupFiles.Click += new System.EventHandler(this.Button_checkDupFiles_Click);
             // 
+            // label_mediaTypeLabel
+            // 
+            this.label_mediaTypeLabel.AutoSize = true;
+            this.label_mediaTypeLabel.Location = new System.Drawing.Point(18, 135);
+            this.label_mediaTypeLabel.Name = "label_mediaTypeLabel";
+            this.label_mediaTypeLabel.Size = new System.Drawing.Size(203, 25);
+            this.label_mediaTypeLabel.TabIndex = 4;
+            this.label_mediaTypeLabel.Text = "Choose media type:";
+            // 
+            // listBox_mediaType
+            // 
+            this.listBox_mediaType.FormattingEnabled = true;
+            this.listBox_mediaType.ItemHeight = 25;
+            this.listBox_mediaType.Location = new System.Drawing.Point(23, 176);
+            this.listBox_mediaType.Name = "listBox_mediaType";
+            this.listBox_mediaType.Size = new System.Drawing.Size(187, 54);
+            this.listBox_mediaType.TabIndex = 5;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 234);
+            this.ClientSize = new System.Drawing.Size(800, 329);
+            this.Controls.Add(this.listBox_mediaType);
+            this.Controls.Add(this.label_mediaTypeLabel);
             this.Controls.Add(this.button_checkDupFiles);
             this.Controls.Add(this.button_browseCheckFolder);
             this.Controls.Add(this.textBox_checkFolder);
@@ -101,5 +123,7 @@
         private System.Windows.Forms.TextBox textBox_checkFolder;
         private System.Windows.Forms.Button button_browseCheckFolder;
         private System.Windows.Forms.Button button_checkDupFiles;
+        private System.Windows.Forms.Label label_mediaTypeLabel;
+        private System.Windows.Forms.ListBox listBox_mediaType;
     }
 }

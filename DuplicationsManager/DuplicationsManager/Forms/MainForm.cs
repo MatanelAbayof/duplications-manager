@@ -22,7 +22,29 @@ namespace DuplicationsManager
         {
             InitializeComponent();
 
+            InitMediaTypes();
+
+
             UpdateCheckBt();
+        }
+
+        // init media types
+        private void InitMediaTypes()
+        {
+            var mediaTypes = Enum.GetValues(typeof(MediaType)).Cast<MediaType>();
+            foreach(MediaType mediaType in mediaTypes)
+            {
+                string mediaTypeInfo = MediaFileInfo.GetMediaTypeInfo(mediaType);
+                listBox_mediaType.Items.Add(mediaTypeInfo);
+            }
+            listBox_mediaType.SelectedIndex = 0;
+        }
+
+        // get selected media type
+        private MediaType GetSelectedMediaType()
+        {
+            var mediaTypes = Enum.GetValues(typeof(MediaType)).Cast<MediaType>();
+            return mediaTypes.ToArray()[listBox_mediaType.SelectedIndex];
         }
 
 
@@ -62,7 +84,7 @@ namespace DuplicationsManager
             DupRequestInfo dri = new DupRequestInfo();
             dri.CheckedDir = textBox_checkFolder.Text;
 
-            dri.MediaType = MediaFileInfo.MediaType.MUSIC; // TODO set value from field
+            dri.MediaType = GetSelectedMediaType();
             dri.MediaSortType = MediaSortType.BY_SIZE; // TODO set value from field
 
 

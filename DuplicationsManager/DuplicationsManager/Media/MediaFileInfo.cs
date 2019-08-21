@@ -16,6 +16,20 @@ namespace DuplicationsManager.Duplications
 
         private MediaFileInfo() { }
 
+        // get media type as string
+        public static string GetMediaTypeInfo(MediaType mediaType)
+        {
+            switch (mediaType)
+            {
+                case MediaType.VIDEO:
+                    return "Video";
+                case MediaType.MUSIC:
+                    return "Music";
+                default:
+                    throw new Exception("Cannot detect file pattern of mediaType=" + mediaType);
+            }
+        }
+
         // get file pattern of media type
         public static string GetFilesPattern(MediaType mediaType) {
             switch (mediaType)
