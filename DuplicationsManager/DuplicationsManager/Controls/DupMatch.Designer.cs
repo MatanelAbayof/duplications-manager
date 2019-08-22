@@ -49,10 +49,10 @@
             // 
             // linkLabel_filePath
             // 
-            this.linkLabel_filePath.AutoSize = true;
+            this.linkLabel_filePath.AutoEllipsis = true;
             this.linkLabel_filePath.Location = new System.Drawing.Point(129, 24);
             this.linkLabel_filePath.Name = "linkLabel_filePath";
-            this.linkLabel_filePath.Size = new System.Drawing.Size(0, 25);
+            this.linkLabel_filePath.Size = new System.Drawing.Size(1355, 103);
             this.linkLabel_filePath.TabIndex = 1;
             // 
             // button_openFile

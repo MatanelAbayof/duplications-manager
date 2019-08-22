@@ -12,11 +12,25 @@ namespace DuplicationsManager.Duplications
     {
         public enum MediaType { VIDEO, MUSIC }
 
-        public enum MediaSortType { BY_DURTION, BY_SIZE } // TODO add: BY_NAME
+        public enum MediaSortType { BY_DURATION, BY_SIZE } // TODO add: BY_NAME
 
         private MediaFileInfo() { }
 
-        // get media type as string
+        // get media sort type info 
+        public static string GetMediaSortTypeInfo(MediaSortType mediaSortType)
+        {
+            switch (mediaSortType)
+            {
+                case MediaSortType.BY_DURATION:
+                    return "By duration";
+                case MediaSortType.BY_SIZE:
+                    return "By size";
+                default:
+                    throw new Exception("Cannot detect media type info of mediaSortType=" + mediaSortType);
+            }
+        }
+
+        // get media type info
         public static string GetMediaTypeInfo(MediaType mediaType)
         {
             switch (mediaType)
@@ -48,7 +62,7 @@ namespace DuplicationsManager.Duplications
         {
             switch (mediaSortType)
             {
-                case MediaSortType.BY_DURTION:
+                case MediaSortType.BY_DURATION:
                     return filePath => (long) new WindowsMediaPlayer().newMedia(filePath).duration; // TODO need elegant convert!!
                 case MediaSortType.BY_SIZE:
                     return filePath => new FileInfo(filePath).Length;

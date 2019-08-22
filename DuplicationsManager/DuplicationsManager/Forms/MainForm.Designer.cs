@@ -35,6 +35,8 @@
             this.button_checkDupFiles = new System.Windows.Forms.Button();
             this.label_mediaTypeLabel = new System.Windows.Forms.Label();
             this.listBox_mediaType = new System.Windows.Forms.ListBox();
+            this.label_mediaSortType = new System.Windows.Forms.Label();
+            this.listBox_mediaSortType = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label_checkFolder
@@ -71,7 +73,7 @@
             // 
             this.button_checkDupFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_checkDupFiles.Location = new System.Drawing.Point(284, 270);
+            this.button_checkDupFiles.Location = new System.Drawing.Point(284, 396);
             this.button_checkDupFiles.Name = "button_checkDupFiles";
             this.button_checkDupFiles.Size = new System.Drawing.Size(232, 51);
             this.button_checkDupFiles.TabIndex = 3;
@@ -90,6 +92,8 @@
             // 
             // listBox_mediaType
             // 
+            this.listBox_mediaType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox_mediaType.FormattingEnabled = true;
             this.listBox_mediaType.ItemHeight = 25;
             this.listBox_mediaType.Location = new System.Drawing.Point(23, 176);
@@ -97,11 +101,33 @@
             this.listBox_mediaType.Size = new System.Drawing.Size(187, 54);
             this.listBox_mediaType.TabIndex = 5;
             // 
+            // label_mediaSortType
+            // 
+            this.label_mediaSortType.AutoSize = true;
+            this.label_mediaSortType.Location = new System.Drawing.Point(23, 247);
+            this.label_mediaSortType.Name = "label_mediaSortType";
+            this.label_mediaSortType.Size = new System.Drawing.Size(245, 25);
+            this.label_mediaSortType.TabIndex = 6;
+            this.label_mediaSortType.Text = "Choose media sort type:";
+            // 
+            // listBox_mediaSortType
+            // 
+            this.listBox_mediaSortType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox_mediaSortType.FormattingEnabled = true;
+            this.listBox_mediaSortType.ItemHeight = 25;
+            this.listBox_mediaSortType.Location = new System.Drawing.Point(28, 289);
+            this.listBox_mediaSortType.Name = "listBox_mediaSortType";
+            this.listBox_mediaSortType.Size = new System.Drawing.Size(230, 79);
+            this.listBox_mediaSortType.TabIndex = 7;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 329);
+            this.ClientSize = new System.Drawing.Size(800, 455);
+            this.Controls.Add(this.listBox_mediaSortType);
+            this.Controls.Add(this.label_mediaSortType);
             this.Controls.Add(this.listBox_mediaType);
             this.Controls.Add(this.label_mediaTypeLabel);
             this.Controls.Add(this.button_checkDupFiles);
@@ -109,7 +135,7 @@
             this.Controls.Add(this.textBox_checkFolder);
             this.Controls.Add(this.label_checkFolder);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(826, 305);
+            this.MinimumSize = new System.Drawing.Size(826, 526);
             this.Name = "MainForm";
             this.Text = "Duplication Manager";
             this.ResumeLayout(false);
@@ -125,5 +151,7 @@
         private System.Windows.Forms.Button button_checkDupFiles;
         private System.Windows.Forms.Label label_mediaTypeLabel;
         private System.Windows.Forms.ListBox listBox_mediaType;
+        private System.Windows.Forms.Label label_mediaSortType;
+        private System.Windows.Forms.ListBox listBox_mediaSortType;
     }
 }

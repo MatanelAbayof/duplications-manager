@@ -23,6 +23,7 @@ namespace DuplicationsManager
             InitializeComponent();
 
             InitMediaTypes();
+            InitMediaSortTypes();
 
 
             UpdateCheckBt();
@@ -45,6 +46,25 @@ namespace DuplicationsManager
         {
             var mediaTypes = Enum.GetValues(typeof(MediaType)).Cast<MediaType>();
             return mediaTypes.ToArray()[listBox_mediaType.SelectedIndex];
+        }
+
+        // init media sort types
+        private void InitMediaSortTypes()
+        {
+            var mediaSortTypes = Enum.GetValues(typeof(MediaSortType)).Cast<MediaSortType>();
+            foreach (MediaSortType mediaSortType in mediaSortTypes)
+            {
+                string mstInfo = MediaFileInfo.GetMediaSortTypeInfo(mediaSortType);
+                listBox_mediaSortType.Items.Add(mstInfo);
+            }
+            listBox_mediaSortType.SelectedIndex = 0;
+        }
+
+        // get selected media sort type
+        private MediaSortType GetSelectedMediaSortType()
+        {
+            var mediaSortTypes = Enum.GetValues(typeof(MediaSortType)).Cast<MediaSortType>();
+            return mediaSortTypes.ToArray()[listBox_mediaSortType.SelectedIndex];
         }
 
 
@@ -85,7 +105,7 @@ namespace DuplicationsManager
             dri.CheckedDir = textBox_checkFolder.Text;
 
             dri.MediaType = GetSelectedMediaType();
-            dri.MediaSortType = MediaSortType.BY_SIZE; // TODO set value from field
+            dri.MediaSortType = GetSelectedMediaSortType();
 
 
             OpenDupResultsForm(dri);
