@@ -26,6 +26,8 @@ namespace DuplicationsManager.Forms
         {
             verticalListView_results.Controls.Clear();
 
+            label_dupResTitle.Text = "Found " + dupsFiles.Count + " duplications:";
+
             foreach (DupFiles df in dupsFiles)
             {
                 DupResult dupResult = new DupResult();

@@ -45,13 +45,13 @@ namespace DuplicationsManager.Duplications
         }
 
         // get file pattern of media type
-        public static string GetFilesPattern(MediaType mediaType) {
+        public static string[] GetFilesPatterns(MediaType mediaType) {
             switch (mediaType)
             {
                 case MediaType.VIDEO:
-                    return "*.mp4";
+                    return new string[] { ".mp4", ".wmv" };
                 case MediaType.MUSIC:
-                    return "*.mp3";
+                    return new string[] { ".mp3" };
                 default:
                     throw new Exception("Cannot detect file pattern of mediaType=" + mediaType);
             }

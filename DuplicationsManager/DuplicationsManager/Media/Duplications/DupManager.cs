@@ -14,11 +14,19 @@ namespace DuplicationsManager.Duplications
         // check duplication of files at folder
         public static List<DupFiles> CheckDup(DupRequestInfo dupRequestInfo)
         {
-            string filesPattern = MediaFileInfo.GetFilesPattern(dupRequestInfo.MediaType);
+            string[] filesPatterns = MediaFileInfo.GetFilesPatterns(dupRequestInfo.MediaType);
             var sortFunc = MediaFileInfo.GetSortFunc(dupRequestInfo.MediaSortType);
-            DupMap dupMap = BuildDupMap(dupRequestInfo.CheckedDir, filesPattern, sortFunc);
+            DupMap dupMap = BuildDupMap(dupRequestInfo.CheckedDir, filesPatterns, sortFunc);
             List<DupFiles> dupsFiles = BuildDupList(dupMap);
             return dupsFiles;
+        }
+
+        class DupFilesComparer : IComparer<DupFiles>
+        {
+            public int Compare(DupFiles df1, DupFiles df2)
+            {
+                return df1.DuplicationsFiles.Count.CompareTo(df2.DuplicationsFiles.Count);
+            }
         }
 
         // build list of dup files
@@ -36,14 +44,24 @@ namespace DuplicationsManager.Duplications
                     dupsFiles.Add(dupFiles);
                 }
             }
+
+            var dfc = new DupFilesComparer();
+            dupsFiles.Sort(dfc);
+            dupsFiles.Reverse();
+
             return dupsFiles;
         }
 
         // build map of duplications
-        private static DupMap BuildDupMap(string folderPath, string filesPattern, Func<string, long> sortByFunc)
+        private static DupMap BuildDupMap(string folderPath, string[] filesPatterns, Func<string, long> sortByFunc)
         {
             // read files
-            string[] entries = Directory.GetFileSystemEntries(folderPath, filesPattern, SearchOption.AllDirectories);
+            string[] allEntries = Directory.GetFileSystemEntries(folderPath, "*.*", SearchOption.AllDirectories);
+            List<string> entries = new List<string>();
+            foreach (string filePattern in filesPatterns)
+            {
+                entries.AddRange(allEntries.Where(entry => entry.EndsWith(filePattern)));
+            }
 
             // build map
             DupMap dupMap = new DupMap();
