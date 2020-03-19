@@ -25,7 +25,14 @@ namespace DuplicationsManager.Duplications
         {
             public int Compare(DupFiles df1, DupFiles df2)
             {
-                return df1.DuplicationsFiles.Count.CompareTo(df2.DuplicationsFiles.Count);
+                var res = df1.DuplicationsFiles.Count.CompareTo(df2.DuplicationsFiles.Count);
+                if(res == 0)
+                {
+                    long dup1Size = new FileInfo(df1.DuplicationsFiles[0]).Length;
+                    long dup2Size = new FileInfo(df2.DuplicationsFiles[0]).Length;
+                    res = dup1Size.CompareTo(dup2Size);
+                }
+                return res;   
             }
         }
 
